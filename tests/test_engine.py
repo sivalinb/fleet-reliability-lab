@@ -63,7 +63,10 @@ class FleetTest(unittest.TestCase):
         self.assertEqual(s['summary']['available_gpus'],0)
 
     def test_failed_node_cannot_be_allocated(self):
-        self.e.commission('alpha',self.a,'storage')
+        s=self.e.commission('alpha',self.a,'storage')
+        failed=next(q for q in s['qualification'] if q['test']=='storage')
+        self.assertEqual(failed['status'],'fail')
+        self.assertGreater(failed['value'],5)  # operator evidence must violate its stated maximum
         with self.assertRaises(LabError): self.e.allocate('alpha',[self.a])
 
     def test_firmware_drift_blocks_qualification(self):

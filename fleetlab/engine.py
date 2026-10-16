@@ -169,7 +169,10 @@ class Engine:
             bad |= bool(a["fault"] == "thermal" and name == "thermal")
             if bad:
                 failures.append(name)
-            db.execute("INSERT INTO qualification VALUES(?,?,?,?,?,?,?,?,?,?,?)", (uuid.uuid4().hex, tenant, aid, GOLDEN, name, "fail" if bad else "pass", value if not bad else 0, unit, expected, "simulated hardware / real policy evaluation", self.clock()))
+                # Preserve an interpretable failed measurement: zero latency or
+                # temperature would contradict a maximum-threshold failure.
+                value = {"storage":42,"thermal":94}.get(name,0)
+            db.execute("INSERT INTO qualification VALUES(?,?,?,?,?,?,?,?,?,?,?)", (uuid.uuid4().hex, tenant, aid, GOLDEN, name, "fail" if bad else "pass", value, unit, expected, "simulated hardware / real policy evaluation", self.clock()))
         # Hardware qualification remains explicitly unmeasured on a CPU laptop.
         db.execute("INSERT INTO qualification VALUES(?,?,?,?,?,?,?,?,?,?,?)", (uuid.uuid4().hex,tenant,aid,GOLDEN,"physical_gpu_burnin","skipped",None,"", "requires real GPU hardware", "not executed",self.clock()))
         state = "quarantined" if failures else "available"
