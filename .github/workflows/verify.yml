@@ -1,0 +1,25 @@
+name: Verify fleet reliability contracts
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  contracts:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python: ['3.9', '3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Lifecycle, isolation, concurrency, crash and delivery contracts
+        run: python -m unittest discover -s tests -v
+      - name: Generate execution-derived replay and check hardware boundary
+        run: |
+          PYTHONPATH=. python scripts/record_replays.py
+          python -c "import json; d=json.load(open('web/evidence.json')); assert len(d['scenarios'])==6; assert all(q['status']=='skipped' for s in d['scenarios'] for f in s['frames'] for q in f['snapshot']['qualification'] if q['test']=='physical_gpu_burnin')"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node --check web/app.js

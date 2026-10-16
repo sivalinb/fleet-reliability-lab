@@ -1,0 +1,10 @@
+work/
+__pycache__/
+*.py[cod]
+.venv/
+.DS_Store
+*.sqlite3*
+*.log
+.env
+web/assets/*.png
+evidence/walkthrough-full.jpg

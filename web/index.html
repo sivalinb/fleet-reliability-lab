@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#123c45">
+  <meta name="description" content="An illustrated, working GPU fleet reliability lab by Siva Babu. Explore commissioning, telemetry, safe repair, verification, and useful capacity.">
+  <title>Fleet Reliability Observatory · Siva Babu</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <a class="wordmark" href="#" aria-label="Fleet Reliability Observatory home"><span class="brand-mark" aria-hidden="true">◌</span><span>FLEET<br><b>OBSERVATORY</b></span></a>
+    <nav aria-label="Main navigation"><a href="#experience">The lab</a><a href="#stack">Technology</a><a href="#principles">Design decisions</a><a class="nav-source" href="https://github.com/sivalinb/fleet-reliability-lab" target="_blank" rel="noopener">View source <span aria-hidden="true">↗</span></a></nav>
+  </header>
+
+  <main id="main">
+    <section class="hero wrap" aria-labelledby="hero-title">
+      <div class="hero-copy"><p class="eyebrow"><span class="tiny-dot"></span> An independent engineering lab · by Siva Babu</p>
+        <h1 id="hero-title">Healthy hardware.<br><em>Useful compute.</em></h1>
+        <p class="hero-deck">An observability signal is the beginning of a story. Follow it through a GPU fleet—from the first benchmark to a verified repair—and see what it means for the workload.</p>
+        <div class="hero-actions"><a class="button primary" href="#experience">Explore the working lab <span aria-hidden="true">↓</span></a><a class="text-link" href="https://github.com/sivalinb/fleet-reliability-lab#run-the-lab" target="_blank" rel="noopener">Run it locally <span aria-hidden="true">↗</span></a></div>
+        <div class="hero-tags"><span>Fleet lifecycle</span><span>Telemetry → action</span><span>Reliability economics</span></div>
+      </div>
+      <figure class="hero-visual"><img src="assets/fleet-observatory.webp" alt="Illustrated robots inspecting GPU racks in a warm, detailed datacenter workshop" width="1672" height="941" fetchpriority="high"><div class="hero-orbit" aria-hidden="true"><span></span><span></span><span></span></div><figcaption><span class="status-dot"></span> A small lab for a very large systems problem</figcaption><div class="image-note">Concept illustration · generated artwork</div></figure>
+    </section>
+
+    <div class="narrative-ribbon"><div class="wrap ribbon-inner"><span>01 <b>Observe the symptom</b></span><i aria-hidden="true">→</i><span>02 <b>Protect the workload</b></span><i aria-hidden="true">→</i><span>03 <b>Repair with evidence</b></span><i aria-hidden="true">→</i><span>04 <b>Prove recovery</b></span></div></div>
+
+    <section id="experience" class="experience section wrap" aria-labelledby="experience-title">
+      <div class="section-heading"><div><p class="eyebrow">THE INTERACTIVE OPERATING STORY</p><h2 id="experience-title">A signal. A decision.<br><em>A fleet back in service.</em></h2></div><p>Explore recorded executions of the lab code. Every phase has a state, a reason, and evidence. The hardware and workload telemetry are synthetic.</p></div>
+      <div class="lab-toolbar"><div class="mode-chip" id="mode-chip"><span class="tiny-dot"></span><span id="mode-text">Loading recorded lab evidence</span></div><button class="text-button" id="connect-open" type="button">Connect local backend <span aria-hidden="true">↗</span></button></div>
+      <div class="scenario-tabs" role="tablist" aria-label="Choose a failure scenario">
+        <button role="tab" aria-selected="true" aria-controls="scenario-panel" id="tab-optic" data-scenario="optic"><span aria-hidden="true">⌁</span> Optical gray failure</button>
+        <button role="tab" aria-selected="false" aria-controls="scenario-panel" id="tab-burnin" data-scenario="burnin"><span aria-hidden="true">◈</span> Burn-in gate</button>
+        <button role="tab" aria-selected="false" aria-controls="scenario-panel" id="tab-thermal" data-scenario="thermal"><span aria-hidden="true">♨</span> Thermal throttling</button>
+        <button role="tab" aria-selected="false" aria-controls="scenario-panel" id="tab-telemetry" data-scenario="telemetry"><span aria-hidden="true">◌</span> Telemetry loss</button>
+        <button role="tab" aria-selected="false" aria-controls="scenario-panel" id="tab-worker-crash" data-scenario="worker-crash"><span aria-hidden="true">↻</span> Worker restart</button>
+        <button role="tab" aria-selected="false" aria-controls="scenario-panel" id="tab-storage" data-scenario="storage"><span aria-hidden="true">▤</span> Storage latency</button>
+      </div>
+      <div id="scenario-panel" class="lab-shell" role="tabpanel" aria-labelledby="tab-optic" data-phase="0">
+        <div class="lab-visual">
+          <div class="scene-topline"><span class="scene-label">ILLUSTRATED OPERATOR VIEW</span><span class="phase-count" id="phase-count">Preparing replay</span></div>
+          <div class="operation-scene" id="operation-scene" data-stage="observe">
+            <img id="operation-image" src="assets/optic-repair-journey.webp" alt="Three illustrated moments: investigate a rack, replace a component, and verify recovery" width="1672" height="941">
+            <div class="scene-shade" aria-hidden="true"></div>
+            <svg class="scene-animation" viewBox="0 0 1000 560" aria-hidden="true">
+              <defs><linearGradient id="packetColor"><stop stop-color="#73e4ce"/><stop offset="1" stop-color="#e8b36d"/></linearGradient><filter id="softGlow"><feGaussianBlur stdDeviation="4"/></filter></defs>
+              <path class="data-route route-1" d="M135 265 C220 75 370 100 450 250 S720 430 855 255"/>
+              <path class="data-route route-2" d="M135 265 C220 75 370 100 450 250 S720 430 855 255"/>
+              <circle class="scan-ring scan-a" cx="193" cy="264" r="51"/><circle class="scan-ring scan-b" cx="193" cy="264" r="51"/>
+              <g class="beacon" transform="translate(265 140)"><circle class="beacon-halo" r="32"/><circle r="11"/><path d="M0 -6V2M0 6V7"/></g>
+              <g class="repair-arm" transform="translate(535 310)"><path d="M0 0l36 -36M31 -43a13 13 0 0 0 17 17l-9 -9 5 -5 9 9a13 13 0 0 0 -17 -17"/><circle cx="0" cy="0" r="4"/></g>
+              <g class="verified-mark" transform="translate(835 220)"><circle r="38"/><path d="M-17 0l12 13 23 -27"/></g>
+              <g class="scene-packet packet-a"><rect x="-10" y="-7" width="20" height="14" rx="4"/><path d="M-5 0H5"/></g>
+              <g class="scene-packet packet-b"><rect x="-8" y="-6" width="16" height="12" rx="3"/></g>
+              <g class="observer-bot" transform="translate(100 425)"><ellipse class="bot-shadow" cx="0" cy="54" rx="38" ry="7"/><g class="bot-body"><path class="bot-aerial" d="M0 -35v-14"/><circle class="bot-aerial-tip" cy="-53" r="5"/><rect class="bot-shell" x="-32" y="-33" width="64" height="52" rx="22"/><rect class="bot-face" x="-24" y="-23" width="48" height="30" rx="12"/><path class="bot-eyes" d="M-15 -9q5 -8 10 0M5 -9q5 -8 10 0"/><path class="bot-shell" d="M-20 19h40v22h-40z"/><circle class="bot-wheel" cx="-20" cy="43" r="12"/><circle class="bot-wheel" cx="20" cy="43" r="12"/><path class="bot-hand" d="M30 25q22 -8 18 -27"/><circle class="bot-shell" cx="46" cy="-4" r="7"/></g></g>
+            </svg>
+            <div class="scene-state-pill" id="scene-state-pill"><span class="status-dot"></span> Waiting for evidence</div>
+            <div class="scene-caption" id="scene-caption">The illustration explains the operation. The adjacent state comes from lab execution.</div>
+          </div>
+          <div class="playback"><button id="play-button" class="button play-button" type="button" disabled><span id="play-icon" aria-hidden="true">▶</span><span id="play-label">Play story</span></button><button id="step-button" class="round-button" aria-label="Advance one replay phase" type="button" disabled>→</button><button id="restart-button" class="round-button" aria-label="Restart this replay" type="button" disabled>↺</button><div class="play-progress" id="play-progress" aria-label="Replay phases"></div><button id="motion-toggle" class="text-button motion-button" type="button" aria-pressed="true">Animation on</button></div>
+          <p class="playback-note" id="playback-note">Illustrations are animated explanations. Charts and state are labeled separately.</p>
+        </div>
+        <aside class="evidence-panel" aria-label="Recorded execution details">
+          <p class="eyebrow" id="phase-eyebrow">EXECUTION EVIDENCE</p><h3 id="phase-title">Loading the lab record…</h3><p class="phase-description" id="phase-description">The public page replays a checked-in execution record. It does not connect to a real GPU fleet.</p>
+          <div class="state-grid"><div><span>Asset state</span><strong id="asset-state">—</strong></div><div><span>Workflow state</span><strong id="workflow-state">—</strong></div></div>
+          <div class="outcome-grid"><div><span>Workload step</span><strong id="workload-step">—</strong></div><div><span>Eligible GPUs</span><strong id="eligible-gpus">—</strong></div><div><span>Capacity exposure*</span><strong id="cost-exposure">—</strong></div></div>
+          <div class="signal-chart"><div class="chart-heading"><span id="chart-title">Recorded lab signal</span><span id="chart-unit">—</span></div><div id="chart-content" class="chart-content"><p class="empty-chart">Measured replay data will appear after evidence loads.</p></div><p id="chart-note">No production telemetry is displayed.</p><p class="cost-footnote">*Synthetic workload; exposure uses an assumed $3/GPU-hour, not cash savings.</p></div>
+          <div class="decision-box"><span class="decision-icon" aria-hidden="true">↳</span><div><h4>Why this decision?</h4><p id="decision-text">A reliable fleet needs both evidence and explicit lifecycle gates.</p></div></div>
+          <details class="raw-evidence"><summary>Inspect the execution record <span aria-hidden="true">↗</span></summary><pre id="raw-evidence">Waiting for evidence.json</pre></details>
+          <div class="api-actions" id="api-actions" hidden><button class="button primary" id="api-advance" type="button">Advance workflow</button><button class="button secondary" id="api-ticket" type="button" hidden>Complete mock repair</button><button class="button secondary" id="api-check" type="button">Record fresh lab observation</button><button class="button secondary" id="api-release" type="button" hidden>Release lab workload</button></div>
+        </aside>
+      </div>
+      <div class="lab-takeaway"><span class="takeaway-icon" aria-hidden="true">◎</span><p><b id="takeaway-title">The engineering point</b><span id="takeaway-text">A green dashboard is a hypothesis. Revalidation is the proof.</span></p><a href="https://github.com/sivalinb/fleet-reliability-lab" target="_blank" rel="noopener">Read the implementation <span aria-hidden="true">↗</span></a></div>
+      <p class="evidence-status" id="evidence-status" role="status" aria-live="polite"></p>
+      <details class="verification-panel" id="verification-panel" hidden><summary>Execution and test provenance <span aria-hidden="true">↗</span></summary><dl id="verification-facts"></dl><a href="evidence.json" download>Download the recorded evidence ↗</a></details>
+    </section>
+
+    <section id="stack" class="technology section"><div class="wrap"><div class="section-heading"><div><p class="eyebrow">TRACE THE RESPONSIBILITY</p><h2>One operation.<br><em>Several kinds of truth.</em></h2></div><p>Metrics show the symptom. Inventory locates the asset. A workflow controls the action. A workload check verifies the outcome.</p></div>
+      <div class="technology-layout"><div class="tech-rail" role="tablist" aria-label="Technology lens">
+        <button id="tech-collect" class="tech-tab" role="tab" aria-selected="true" aria-controls="tech-panel" data-tech="collect"><span class="tech-number">01</span><span><b>Collect & correlate</b><small>OpenTelemetry · Prometheus</small></span><i aria-hidden="true">↗</i></button>
+        <button id="tech-investigate" class="tech-tab" role="tab" aria-selected="false" aria-controls="tech-panel" data-tech="investigate"><span class="tech-number">02</span><span><b>Investigate the evidence</b><small>Mimir · Loki · Tempo · Grafana</small></span><i aria-hidden="true">↗</i></button>
+        <button id="tech-coordinate" class="tech-tab" role="tab" aria-selected="false" aria-controls="tech-panel" data-tech="coordinate"><span class="tech-number">03</span><span><b>Coordinate the repair</b><small>Persistent workflow · inventory · ITSM</small></span><i aria-hidden="true">↗</i></button>
+        <button id="tech-verify" class="tech-tab" role="tab" aria-selected="false" aria-controls="tech-panel" data-tech="verify"><span class="tech-number">04</span><span><b>Verify useful recovery</b><small>Qualification · workload · cost</small></span><i aria-hidden="true">↗</i></button>
+      </div><div id="tech-panel" class="tech-panel" role="tabpanel" aria-labelledby="tech-collect"><span class="tech-label" id="tech-label">THE COLLECTION PLANE</span><h3 id="tech-title">Identity is the join.</h3><p id="tech-description"></p><div class="tech-example" id="tech-example"></div><div class="tech-boundary"><span aria-hidden="true">ⓘ</span><p id="tech-boundary"></p></div><a id="tech-source" href="https://opentelemetry.io/docs/collector/" target="_blank" rel="noopener">Read the primary source <span aria-hidden="true">↗</span></a></div></div>
+      <div class="implementation-strip"><span class="implementation-label">IMPLEMENTATION BOUNDARY</span><p><b>Executable core:</b> Python, SQLite, scoped HTTP API, persistent repair state, qualification gates, and failure scenarios. <b>Optional integration profile:</b> the telemetry and workflow services configured in the repository. The public replay does not run those services.</p></div>
+    </div></section>
+
+    <section class="qualification section wrap" aria-labelledby="qualification-title"><figure class="qualification-art"><img src="assets/burn-in-laboratory.webp" alt="Illustrated GPU qualification laboratory, with a machine under sustained test and an isolated machine awaiting investigation" width="1672" height="941" loading="lazy"><figcaption>Concept illustration · a quality gate before allocation</figcaption></figure><div class="qualification-copy"><p class="eyebrow">CAPACITY MUST EARN ITS PLACE</p><h2 id="qualification-title">Commission.<br>Challenge.<br><em>Qualify.</em></h2><p>“Installed” and “ready to run customer work” are different states. Qualification captures a baseline and withholds capacity that fails its acceptance policy.</p><ol class="qualification-steps"><li><span>01</span><div><b>Discover the physical asset</b><p>Stable identity, hardware configuration, component and topology relationships.</p></div></li><li><span>02</span><div><b>Test correctness and performance</b><p>Versioned checks, explicit thresholds, failure evidence. Unsupported hardware tests stay skipped.</p></div></li><li><span>03</span><div><b>Gate entry and re-entry</b><p>A repair ticket closes the human task. Passing revalidation returns the node to service.</p></div></li></ol><a href="#experience" class="text-link" id="show-burnin">Explore the burn-in scenario <span aria-hidden="true">↗</span></a></div></section>
+
+    <section id="principles" class="principles section wrap"><div class="section-heading"><div><p class="eyebrow">PRINCIPAL-LEVEL DECISIONS</p><h2>Design for the parts<br><em>that go wrong.</em></h2></div><p>A credible lab is explicit about uncertainty, blast radius, operating cost, and the difference between a demonstration and a production system.</p></div><div class="principle-grid">
+      <article><span class="principle-icon" aria-hidden="true">◌</span><h3>Unknown is a state.</h3><p>Missing telemetry is an observability incident. It must not silently become “healthy” or trigger an unsupported hardware diagnosis.</p><button class="text-button scenario-jump" data-target="telemetry" type="button">Explore telemetry loss ↗</button></article>
+      <article><span class="principle-icon" aria-hidden="true">↻</span><h3>Retries need a memory.</h3><p>Persist intent and outcomes. Deduplicate incidents and ticket creation. Resume after a worker restart without repeating a disruptive action.</p><button class="text-button scenario-jump" data-target="worker-crash" type="button">Explore restart recovery ↗</button></article>
+      <article><span class="principle-icon" aria-hidden="true">◈</span><h3>Return performance.</h3><p>Component replacement is an action. Workload and hardware revalidation establish whether the repair restored useful capacity.</p><button class="text-button scenario-jump" data-target="optic" type="button">Explore verified repair ↗</button></article>
+    </div>
+    <div class="economics-panel"><div><p class="eyebrow">THE ECONOMIC LENS</p><h3>Count the useful work.</h3><p>The lab estimates capacity exposure from affected GPUs, elapsed disruption, and an explicitly assumed hourly value. It is a scenario estimate, not measured energy or a claim of cash savings.</p></div><div class="cost-formula"><span>Affected GPUs</span><i>×</i><span>Disrupted hours</span><i>×</i><span>Assumed $ / GPU-hour</span><strong>= Capacity exposure</strong></div></div>
+    </section>
+
+    <section class="sources-section section wrap" id="sources"><div class="source-intro"><p class="eyebrow">EVIDENCE, WITH BOUNDARIES</p><h2>Inspired by public research.<br><em>Built independently.</em></h2><p>This project explores patterns described in public fleet operations material. It does not claim to reproduce Nscale’s private architecture, policies, or production performance.</p></div><div class="source-list"><a href="https://www.nscale.com/blog/fleet-operations" target="_blank" rel="noopener"><span>PUBLIC ARCHITECTURE</span><b>Nscale · Fleet Operations</b><i>↗</i></a><a href="https://www.nscale.com/blog/the-gpu-fleet-that-fixes-itself" target="_blank" rel="noopener"><span>REPAIR LIFECYCLE</span><b>Nscale · The GPU fleet that fixes itself</b><i>↗</i></a><a href="https://www.nscale.com/blog/bare-metal-performance" target="_blank" rel="noopener"><span>COMMISSIONING & QUALIFICATION</span><b>Nscale · Bare-metal performance</b><i>↗</i></a><a href="https://github.com/sivalinb/fleet-reliability-lab" target="_blank" rel="noopener"><span>PROJECT DESIGN & REPRODUCTION</span><b>Source, tests, evidence, and assumptions</b><i>↗</i></a></div></section>
+  </main>
+
+  <footer class="site-footer"><div class="wrap footer-top"><a class="footer-name" href="https://sivalinb.github.io/">Siva Babu <span aria-hidden="true">↗</span></a><p>Observability that connects<br><b>the signal to the outcome.</b></p><a href="https://github.com/sivalinb/fleet-reliability-lab" target="_blank" rel="noopener">Explore the repository ↗</a></div><div class="wrap footer-bottom"><span>Synthetic hardware. Executable lab code. No employer or customer data.</span><span>Independent project · No Nscale affiliation</span></div></footer>
+
+  <dialog id="connect-dialog" aria-labelledby="connect-title"><form id="connect-form"><div class="dialog-heading"><p class="eyebrow">LOCAL EXECUTABLE MODE</p><button id="connect-close" type="button" class="round-button" aria-label="Close connection dialog">×</button></div><h2 id="connect-title">Connect your lab.</h2><p>The public page uses recorded evidence. Connect to a backend you run locally to execute scenarios. Credentials stay in memory for this page session.</p><label for="api-base">Backend URL</label><input id="api-base" type="url" value="http://127.0.0.1:8790" required autocomplete="off"><label for="api-token">Lab bearer token</label><input id="api-token" type="password" value="alpha-operator-demo" required autocomplete="off"><p class="dialog-note">Use only the bundled synthetic lab. Do not enter production credentials.</p><div class="dialog-actions"><button class="button primary" type="submit">Connect backend</button><button id="disconnect-button" class="text-button" type="button">Use recorded replay</button></div><p id="connect-status" role="status"></p></form></dialog>
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+</body>
+</html>

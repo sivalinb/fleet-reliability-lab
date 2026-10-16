@@ -1,0 +1,10 @@
+{
+  "test_command": "python3 -m unittest discover -s tests -v",
+  "tests_run": 85,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "recorded_at": "2026-10-16T03:35:43.902458+00:00",
+  "source_revision": null,
+  "scope": "Actual standard-library contract tests on macOS arm64; physical GPU qualification is not part of this test count."
+}

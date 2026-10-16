@@ -1,0 +1,68 @@
+{
+  "recorded_at": "2026-10-16T03:38:00.484217+00:00",
+  "platform": "Darwin/arm64",
+  "hardware_provenance": "synthetic GPU/fabric/storage/thermal signals; real software services and control-plane execution",
+  "checks": {
+    "api_ready": true,
+    "mimir_ready": true,
+    "loki_ready": true,
+    "tempo_ready": true,
+    "collector_ready": true,
+    "grafana_ready": true,
+    "temporal_survives_worker_stop": true,
+    "ticket_completion_does_not_resolve": true,
+    "temporal_worker_restart_verified": true,
+    "one_ticket_after_restart": true,
+    "verified_recovery_after_ticket": true,
+    "outbox_retains_unreachable_delivery": true,
+    "outbox_replays_to_real_collector": true,
+    "prometheus_remote_write_mimir_query": true,
+    "collector_to_loki_query": true,
+    "collector_to_tempo_trace_lookup": true,
+    "grafana_dashboard_provisioned": true
+  },
+  "temporal": {
+    "workflow_id": "repair-inc-f2996ca3325c",
+    "status": "resolved",
+    "history_events": 57,
+    "ticket_rows": 1,
+    "workflow_engine": "real Temporal development server; actual worker terminated and restarted"
+  },
+  "mimir": {
+    "query": "sum(fleet_asset_state{tenant=\"alpha\"})",
+    "result": [
+      {
+        "metric": {},
+        "value": [
+          1792121929.607,
+          "4"
+        ]
+      }
+    ]
+  },
+  "loki": {
+    "records": 11,
+    "incident_id": "inc-f2996ca3325c",
+    "query_result_groups": 11
+  },
+  "tempo": {
+    "trace_id": "90780903c6b04aabf49b178936db0b3c",
+    "span_count": 11,
+    "span_provenance": "event-derived control-plane transitions, not GPU execution timings"
+  },
+  "local_probes": {
+    "origin": "measured local CPU and temporary filesystem; no GPU or RDMA benchmark",
+    "samples": 20,
+    "cpu_digest_step_ms": {
+      "median": 3.0676044999999874,
+      "max": 3.1514580000049364
+    },
+    "scratch_roundtrip_ms": {
+      "median": 1.6063544999980195,
+      "max": 3.7389169999997307
+    },
+    "scratch_bytes": 786432,
+    "checksum_verified": true,
+    "physical_gpu_test": "skipped"
+  }
+}

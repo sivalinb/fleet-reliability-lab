@@ -1,0 +1,49 @@
+target: all
+multitenancy_enabled: false
+server:
+  http_listen_address: 127.0.0.1
+  grpc_listen_address: 127.0.0.1
+  http_listen_port: 39009
+  grpc_listen_port: 39095
+ingest_storage:
+  enabled: false
+common:
+  storage:
+    backend: filesystem
+    filesystem:
+      dir: ${LAB_RUNTIME}/mimir/blocks
+blocks_storage:
+  backend: filesystem
+  filesystem:
+    dir: ${LAB_RUNTIME}/mimir/blocks
+  tsdb:
+    dir: ${LAB_RUNTIME}/mimir/tsdb
+  bucket_store:
+    sync_dir: ${LAB_RUNTIME}/mimir/sync
+ingester:
+  ring:
+    replication_factor: 1
+    kvstore:
+      store: inmemory
+    instance_addr: 127.0.0.1
+compactor:
+  data_dir: ${LAB_RUNTIME}/mimir/compactor
+  sharding_ring:
+    kvstore:
+      store: inmemory
+store_gateway:
+  sharding_ring:
+    replication_factor: 1
+    kvstore:
+      store: inmemory
+    instance_addr: 127.0.0.1
+distributor:
+  ring:
+    kvstore:
+      store: inmemory
+ruler_storage:
+  backend: filesystem
+  filesystem:
+    dir: ${LAB_RUNTIME}/mimir/rules
+activity_tracker:
+  filepath: ${LAB_RUNTIME}/mimir/activity.log

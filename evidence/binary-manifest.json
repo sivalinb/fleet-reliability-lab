@@ -1,0 +1,51 @@
+[
+  {
+    "name": "tempo",
+    "path": "tempo/tempo",
+    "tag": "v2.7.2",
+    "sha256": "dfdafb6fdecdf5c33bbe1d011599228bce240c0d2535e9e05b88405e1e1b9943",
+    "checksum_verified": true
+  },
+  {
+    "name": "loki",
+    "path": "loki/loki",
+    "tag": "v3.7.8",
+    "sha256": "95d830437482aba989a7d7a65be3c618a67a6e46f6e614544cc4b9ce09f499a1",
+    "checksum_verified": true
+  },
+  {
+    "name": "alertmanager",
+    "path": "alertmanager/alertmanager",
+    "tag": "v0.34.1",
+    "sha256": "a3941879f340ef12a4cc1a479c82bd8520611265ea8d1ee25c88bd5f944d8293",
+    "checksum_verified": true
+  },
+  {
+    "name": "mimir",
+    "path": "mimir/mimir",
+    "tag": "mimir-3.2.2",
+    "sha256": "577d623e6e5947818dc475bfd31bdd651ebeb49576c0f838f8126826d53fc1f4",
+    "checksum_verified": true
+  },
+  {
+    "name": "prometheus",
+    "path": "prometheus/prometheus",
+    "tag": "v3.15.0",
+    "sha256": "920df4d17e78b3b0175af144eb318b0c74d1cf7b1d1251b326966f0e81977260",
+    "checksum_verified": true
+  },
+  {
+    "name": "temporal",
+    "path": "temporal/temporal",
+    "tag": "v1.9.1",
+    "sha256": "41e0425378fcb4fb5766340b97435e20fe47bbff2d7bf644ec2d51f7662b7c56",
+    "checksum_verified": true
+  },
+  {
+    "name": "otelcol-contrib",
+    "path": "otelcol-contrib/otelcol-contrib",
+    "tag": "v0.162.0",
+    "sha256": "d5e11974d2e4adac3cc001a25137aad52f6e77ec3034ba7735cac7c219a5f97a",
+    "checksum_verified": true
+  }
+]

@@ -1,0 +1,27 @@
+groups:
+  - name: fleet-observability
+    rules:
+      - alert: FleetTelemetryStale
+        expr: fleet_telemetry_age_seconds > 30
+        for: 4s
+        labels:
+          severity: warning
+          owner: telemetry-platform
+        annotations:
+          summary: 'Missing fresh observations; withhold repair automation'
+      - alert: FleetCapacityWithheld
+        expr: fleet_asset_state{state="quarantined"} == 1
+        for: 4s
+        labels:
+          severity: warning
+          owner: fleet-reliability
+        annotations:
+          summary: 'Qualification or repair has withheld capacity'
+      - alert: FleetTelemetryDeliveryBacklog
+        expr: fleet_outbox_pending_events > 0
+        for: 10s
+        labels:
+          severity: warning
+          owner: telemetry-platform
+        annotations:
+          summary: 'Telemetry delivery has pending durable records'

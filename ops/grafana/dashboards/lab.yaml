@@ -1,0 +1,7 @@
+apiVersion: 1
+providers:
+  - name: Fleet Reliability Lab
+    folder: Fleet Reliability Lab
+    type: file
+    options:
+      path: ${LAB_DASHBOARD_PATH}

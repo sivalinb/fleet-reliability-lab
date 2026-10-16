@@ -1,0 +1,25 @@
+server:
+  http_listen_address: 127.0.0.1
+  grpc_listen_address: 127.0.0.1
+  http_listen_port: 33200
+  grpc_listen_port: 39097
+distributor:
+  receivers:
+    otlp:
+      protocols:
+        grpc:
+          endpoint: 127.0.0.1:34317
+        http:
+          endpoint: 127.0.0.1:34318
+ingester:
+  max_block_duration: 1m
+compactor:
+  compaction:
+    block_retention: 24h
+storage:
+  trace:
+    backend: local
+    wal:
+      path: ${LAB_RUNTIME}/tempo/wal
+    local:
+      path: ${LAB_RUNTIME}/tempo/blocks

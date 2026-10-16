@@ -1,0 +1,361 @@
+{
+  "uid": "fleet-reliability",
+  "title": "Fleet Reliability \u00b7 synthetic hardware / real operations",
+  "schemaVersion": 41,
+  "version": 1,
+  "refresh": "5s",
+  "time": {
+    "from": "now-15m",
+    "to": "now"
+  },
+  "tags": [
+    "fleetlab",
+    "synthetic-hardware",
+    "real-control-plane"
+  ],
+  "panels": [
+    {
+      "id": 1,
+      "title": "Lifecycle \u00b7 simulated nodes",
+      "description": "",
+      "type": "timeseries",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "fleet-mimir"
+      },
+      "gridPos": {
+        "x": 0,
+        "y": 0,
+        "w": 12,
+        "h": 9
+      },
+      "targets": [
+        {
+          "expr": "sum by (tenant,state) (fleet_asset_state == 1)",
+          "refId": "A",
+          "legendFormat": "{{tenant}} {{asset_id}} {{state}}"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "short",
+          "color": {
+            "mode": "palette-classic"
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        }
+      }
+    },
+    {
+      "id": 2,
+      "title": "Freshness \u00b7 automation requires <= 30 seconds",
+      "description": "",
+      "type": "timeseries",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "fleet-mimir"
+      },
+      "gridPos": {
+        "x": 12,
+        "y": 0,
+        "w": 12,
+        "h": 9
+      },
+      "targets": [
+        {
+          "expr": "fleet_telemetry_age_seconds",
+          "refId": "A",
+          "legendFormat": "{{tenant}} {{asset_id}} {{state}}"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "s",
+          "color": {
+            "mode": "palette-classic"
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        }
+      }
+    },
+    {
+      "id": 3,
+      "title": "Fabric errors \u00b7 synthetic cumulative counter",
+      "description": "",
+      "type": "timeseries",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "fleet-mimir"
+      },
+      "gridPos": {
+        "x": 0,
+        "y": 9,
+        "w": 12,
+        "h": 9
+      },
+      "targets": [
+        {
+          "expr": "rate(lab_fabric_errors_total[30s])",
+          "refId": "A",
+          "legendFormat": "{{tenant}} {{asset_id}} {{state}}"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "ops",
+          "color": {
+            "mode": "palette-classic"
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        }
+      }
+    },
+    {
+      "id": 4,
+      "title": "GPU temperature \u00b7 synthetic hardware",
+      "description": "",
+      "type": "timeseries",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "fleet-mimir"
+      },
+      "gridPos": {
+        "x": 12,
+        "y": 9,
+        "w": 12,
+        "h": 9
+      },
+      "targets": [
+        {
+          "expr": "lab_gpu_temperature_celsius",
+          "refId": "A",
+          "legendFormat": "{{tenant}} {{asset_id}} {{state}}"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "celsius",
+          "color": {
+            "mode": "palette-classic"
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        }
+      }
+    },
+    {
+      "id": 5,
+      "title": "Open and resolved incidents",
+      "description": "",
+      "type": "timeseries",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "fleet-mimir"
+      },
+      "gridPos": {
+        "x": 0,
+        "y": 18,
+        "w": 12,
+        "h": 9
+      },
+      "targets": [
+        {
+          "expr": "fleet_incidents",
+          "refId": "A",
+          "legendFormat": "{{tenant}} {{asset_id}} {{state}}"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "short",
+          "color": {
+            "mode": "palette-classic"
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        }
+      }
+    },
+    {
+      "id": 6,
+      "title": "Allocated device utilization \u00b7 not useful throughput",
+      "description": "",
+      "type": "timeseries",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "fleet-mimir"
+      },
+      "gridPos": {
+        "x": 12,
+        "y": 18,
+        "w": 12,
+        "h": 9
+      },
+      "targets": [
+        {
+          "expr": "lab_gpu_utilization_ratio",
+          "refId": "A",
+          "legendFormat": "{{tenant}} {{asset_id}} {{state}}"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "percentunit",
+          "color": {
+            "mode": "palette-classic"
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        }
+      }
+    },
+    {
+      "id": 7,
+      "title": "Capacity exposure \u00b7 explicit illustrative basis",
+      "description": "Union of incident intervals within each simulated job lifetime; multiply by allocated GPUs. Not cash savings.",
+      "type": "timeseries",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "fleet-mimir"
+      },
+      "gridPos": {
+        "x": 0,
+        "y": 27,
+        "w": 12,
+        "h": 9
+      },
+      "targets": [
+        {
+          "expr": "fleet_capacity_exposure_gpu_hours",
+          "refId": "A",
+          "legendFormat": "{{tenant}} {{asset_id}} {{state}}"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "h",
+          "color": {
+            "mode": "palette-classic"
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        }
+      }
+    },
+    {
+      "id": 8,
+      "title": "Durable OTLP outbox \u00b7 delivery health",
+      "description": "",
+      "type": "timeseries",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "fleet-mimir"
+      },
+      "gridPos": {
+        "x": 12,
+        "y": 27,
+        "w": 12,
+        "h": 9
+      },
+      "targets": [
+        {
+          "expr": "fleet_outbox_pending_events",
+          "refId": "A",
+          "legendFormat": "{{tenant}} {{asset_id}} {{state}}"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "short",
+          "color": {
+            "mode": "palette-classic"
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        }
+      }
+    },
+    {
+      "id": 20,
+      "title": "Real delivered control-plane events \u00b7 synthetic hardware inputs",
+      "type": "logs",
+      "datasource": {
+        "type": "loki",
+        "uid": "fleet-loki"
+      },
+      "gridPos": {
+        "x": 0,
+        "y": 36,
+        "w": 24,
+        "h": 11
+      },
+      "targets": [
+        {
+          "expr": "{service_name=\"fleet-reliability-lab\"}",
+          "refId": "A"
+        }
+      ],
+      "options": {
+        "showTime": true,
+        "wrapLogMessage": true,
+        "sortOrder": "Descending",
+        "dedupStrategy": "none"
+      }
+    }
+  ],
+  "links": [
+    {
+      "title": "Animated operations story",
+      "url": "http://127.0.0.1:8790/",
+      "targetBlank": true
+    },
+    {
+      "title": "Trace investigation in Tempo",
+      "url": "/explore?left=%7B%22datasource%22:%22fleet-tempo%22%7D",
+      "targetBlank": true
+    }
+  ]
+}

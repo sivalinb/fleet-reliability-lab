@@ -1,0 +1,38 @@
+apiVersion: 1
+datasources:
+  - name: Mimir
+    uid: fleet-mimir
+    type: prometheus
+    access: proxy
+    url: http://127.0.0.1:39009/prometheus
+    isDefault: true
+    jsonData:
+      httpMethod: POST
+      timeInterval: 2s
+  - name: Prometheus
+    uid: fleet-prometheus
+    type: prometheus
+    access: proxy
+    url: http://127.0.0.1:39090
+  - name: Loki
+    uid: fleet-loki
+    type: loki
+    access: proxy
+    url: http://127.0.0.1:33100
+    jsonData:
+      derivedFields:
+        - name: TraceID
+          matcherRegex: '"trace_id":\s*"([a-f0-9]+)"'
+          datasourceUid: fleet-tempo
+          url: '$${__value.raw}'
+  - name: Tempo
+    uid: fleet-tempo
+    type: tempo
+    access: proxy
+    url: http://127.0.0.1:33200
+    jsonData:
+      tracesToLogsV2:
+        datasourceUid: fleet-loki
+        spanStartTimeShift: -5m
+        spanEndTimeShift: 5m
+        filterByTraceID: true
