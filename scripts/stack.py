@@ -18,7 +18,7 @@ def main():
     p.add_argument('--grafana-home',type=Path)
     p.add_argument('--python',default=sys.executable,help='Python with optional Temporal SDK installed')
     args=p.parse_args()
-    ports=[8790,39009,39095,33100,39096,33200,39097,34317,34318,24318,23133,39093,39090,37233,38233]
+    ports=[8790,39009,39095,37946,33100,39096,33200,39097,34317,34318,24318,23133,8888,39093,39090,37233,38233]
     if args.grafana_home:ports.append(33300)
     for port in ports:
         with socket.socket() as sock:

@@ -1,0 +1,29 @@
+{
+  "recorded_at": "2026-10-16T03:46:19.734069+00:00",
+  "provenance": "Actual Mimir/Prometheus series and Loki index-series API responses from native local stack; hardware inputs remain synthetic.",
+  "metric_series_returned": 138,
+  "metric_label_names": [
+    "alertname",
+    "alertstate",
+    "asset_id",
+    "instance",
+    "job",
+    "owner",
+    "severity",
+    "site",
+    "source",
+    "state",
+    "status",
+    "tenant"
+  ],
+  "loki_index_series": [
+    {
+      "service_name": "fleet-reliability-lab"
+    }
+  ],
+  "assertions": {
+    "no_incident_trace_request_labels_in_metrics": true,
+    "loki_indexes_only_service_name": true
+  },
+  "note": "Loki query response groups can include structured metadata; they must not be mistaken for indexed stream cardinality."
+}

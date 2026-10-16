@@ -1,5 +1,10 @@
 target: all
 multitenancy_enabled: false
+memberlist:
+  bind_addr: [127.0.0.1]
+  bind_port: 37946
+usage_stats:
+  enabled: false
 server:
   http_listen_address: 127.0.0.1
   grpc_listen_address: 127.0.0.1
